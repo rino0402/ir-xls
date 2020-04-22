@@ -21,8 +21,7 @@ End Function
 'ディレクトリ名の取得
 Function DirName() As String
 Attribute DirName.VB_ProcData.VB_Invoke_Func = " \n14"
-'  DirName = ThisWorkbook.Worksheets("管理").Range("C1").Value
-  DirName = ThisWorkbook.Path & "\"
+  DirName = ThisWorkbook.Worksheets("管理").Range("C1").Value
 End Function
 
 '++++++++++++++++++++++++++++++++++++++++++++++++++++++
