@@ -28,7 +28,7 @@ Attribute SH_BT.VB_ProcData.VB_Invoke_Func = " \n14"
     With Workbooks(BookName(1))
       Sh = .Worksheets("FILE").Buttons(Application.Caller).Text
       .Worksheets(Sh).Activate
-      .Worksheets(Sh).Unprotect password:="sdc2035"
+      .Worksheets(Sh).Unprotect Password:="sdc2035"
 ' 2008.04.26
 '      If InStr(.Worksheets(Sh).Range("AL2"), "è§ïiâª") > 0 Then
 '        .Worksheets(Sh).Range("C10") = "îÃîÑ(è§ïiâª)"
@@ -156,7 +156,7 @@ End Sub
 Sub SIKI_SetUp(ByVal WriShName As String)
 Attribute SIKI_SetUp.VB_ProcData.VB_Invoke_Func = " \n14"
   With Workbooks(BookName(1))
-    .Sheets(WriShName).Unprotect password:="sdc2035"
+    .Sheets(WriShName).Unprotect Password:="sdc2035"
     Select Case WriShName
       Case "200"
         WriteSIKI_200
@@ -171,7 +171,7 @@ Attribute SIKI_SetUp.VB_ProcData.VB_Invoke_Func = " \n14"
       Case Else
         WriteSIKI .Sheets(WriShName)
     End Select
-    .Sheets(WriShName).Protect password:="sdc2035"
+    .Sheets(WriShName).Protect Password:="sdc2035"
   End With
 End Sub
 
@@ -247,7 +247,7 @@ Attribute WriteSIKI.VB_ProcData.VB_Invoke_Func = " \n14"
   With A_Sh
     .Range("AA16:AL16,BA16:BL16,CA16:CL16,DA16:DL16,EA16:EL16").FormulaR1C1 = "=SUM(R[-6]C:R[-1]C)"
     .Range("AA22:AL22,BA22:BL22,CA22:CL22,DA22:DL22,EA22:EL22").FormulaR1C1 = "=SUM(R[-5]C:R[-2]C)-SUM(R[-1]C)"
-'    .Range("AA26:AL26,BA26:BL26,CA26:CL26,DA26:DL26,EA26:EL26").FormulaR1C1 = "=SUM(R[-3]C:R[-1]C)"
+    .Range("AA26:AL26,BA26:BL26,CA26:CL26,DA26:DL26,EA26:EL26").FormulaR1C1 = "=R[-3]C + R[-2]C - R[-1]C"
     .Range("AA27:AL27,BA27:BL27,CA27:CL27,DA27:DL27,EA27:EL27").FormulaR1C1 = "=SUM(R[-5]C,R[-1]C)"
     .Range("AA28:AL28,BA28:BL28,CA28:CL28,DA28:DL28,EA28:EL28").FormulaR1C1 = "=SUM(R[22]C,R[24]C,R[25]C,R[26]C,R[27]C,R[55]C,R[57]C)"
 '    .Range("AA29:AL29,BA29:BL29,CA29:CL29,DA29:DL29,EA29:EL29").FormulaR1C1 = "=SUM(R[-17]C)-SUM(R[-7]C)"

@@ -45,7 +45,7 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
         If SheetName <> "" Then
           Set WriteSheet = Workbooks(BookName(4)).Worksheets(SheetName)   '実績保存用のブック（書込みよう）
           With .Worksheets(WriteSheet.Name)
-            .Unprotect password:="sdc2035"            'ロック解除（経営資料の入力用ブック）
+            .Unprotect Password:="sdc2035"            'ロック解除（経営資料の入力用ブック）
             '表題
             WriteSheet.Range("B2").Value = "第 " & CStr(ThisYear - 1) & " 期"
             WriteSheet.Range("AK2").Value = .Range("AK2").Value
@@ -73,11 +73,15 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
                 WriteSheet.Range("AA10").Consolidate sources:=ReadBk & "R10C105:R37C117", Function:=xlSum
                 WriteSheet.Range("AA50").Consolidate sources:=ReadBk & "R50C105:R91C117", Function:=xlSum
                 '今期実績のデータを前期実績へ
-                .Range("DA10").Consolidate sources:=ReadBk & "R10C27:R37C39", Function:=xlSum
-                .Range("DA50").Consolidate sources:=ReadBk & "R50C27:R91C39", Function:=xlSum
+'                .Range("DA10").Consolidate sources:=ReadBk & "R10C27:R37C39", Function:=xlSum
+                .Range("AA10:AL37").Copy (.Range("DA10"))
+'                .Range("DA50").Consolidate sources:=ReadBk & "R50C27:R91C39", Function:=xlSum
+                .Range("AA50:AL91").Copy (.Range("DA50"))
                 '来期計画のデータを事業計画へ
-                .Range("CA10").Consolidate sources:=ReadBk & "R10C131:R37C143", Function:=xlSum
-                .Range("CA50").Consolidate sources:=ReadBk & "R50C131:R91C143", Function:=xlSum
+'                .Range("CA10").Consolidate sources:=ReadBk & "R10C131:R37C143", Function:=xlSum
+                .Range("EA10:EL37").Copy (.Range("CA10"))
+'                .Range("CA50").Consolidate sources:=ReadBk & "R50C131:R91C143", Function:=xlSum
+                .Range("EA50:EL91").Copy (.Range("CA50"))
                 '今期実績、月/計画、来期計画のデータを消去
                 .Range("AA10:AM37,AA50:AM91").ClearContents
                 .Range("BA10:BM37,BA50:BM91").ClearContents
@@ -85,7 +89,7 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
             End Select
             SIKI_SetUp SheetName  '式の書き換え
           End With
-          WriteSheet.Protect password:="sdc2035"  'ロック（実績保存用ブック）
+          WriteSheet.Protect Password:="sdc2035"  'ロック（実績保存用ブック）
         End If
       Next
       
