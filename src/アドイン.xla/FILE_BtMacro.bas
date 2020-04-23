@@ -12,7 +12,8 @@ Option Explicit
 ' Const cstVersion = "ver.008 2009.08.05 粗利追加／共通化"
 ' Const cstVersion = "ver.009 2009.08.06 収支対比表 粗利 追加"
 'Const cstVersion = "ver.010 2012.03.27 集計表 来期計画の場合 期をプラス１"
-Const cstVersion = "ver.011 2020.03.07 2020年度版 売上原価 B 小計 の式を戻るボタンでセットしない"
+'Const cstVersion = "ver.011 2020.03.07 2020年度版 売上原価 B 小計 の式を戻るボタンでセットしない"
+Const cstVersion = "ver.012 2020.04.23 2020年度版 滋賀pc"
 
 '++++++++++++++++++++++++++++++++++++++++++++++++++
 'ｼｰﾄ名ﾎﾞﾀﾝのアクション

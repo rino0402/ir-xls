@@ -23,7 +23,7 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
 '    Application.ScreenUpdating = False  '（画面表示しない）
     If Ch = vbYes Then
       ThisYear = Val(.Worksheets("FILE").Range("C2").Value) '今期
-      ORGName = "第" & CStr(ThisYear - 1) & "期"            '前期
+      ORGName = "第" & CStr(ThisYear) & "期"            '前期
       Workbooks.Open DirName & BookName(4)  '実績保存用ブックのオープン
       
       'データの更新
@@ -45,9 +45,9 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
         If SheetName <> "" Then
           Set WriteSheet = Workbooks(BookName(4)).Worksheets(SheetName)   '実績保存用のブック（書込みよう）
           With .Worksheets(WriteSheet.Name)
-            .Unprotect Password:="sdc2035"            'ロック解除（経営資料の入力用ブック）
+            WriteSheet.Unprotect Password:="sdc2035"            'ロック解除（経営資料の入力用ブック）
             '表題
-            WriteSheet.Range("B2").Value = "第 " & CStr(ThisYear - 1) & " 期"
+            WriteSheet.Range("B2").Value = "第 " & CStr(ThisYear) & " 期"
             WriteSheet.Range("AK2").Value = .Range("AK2").Value
             WriteSheet.Range("AL2").Value = .Range("AL2").Value
             Select Case SheetName
