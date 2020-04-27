@@ -5,7 +5,7 @@ Option Base 1
 '++++++++++++++++++++++++++++++++++++++++++++++++++
 'メンテ
 '++++++++++++++++++++++++++++++++++++++++++++++++++
-
+'2020.04.24 大阪事 エラー修正
 '++++++++++++++++++++++++++++++++++++++++++++++++++
 '年度末メンテ
 Sub MENTE_Year()
@@ -59,13 +59,13 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
                   '前期実績のデータを実績のブックへ
                   WriteSheet.Range("AA" & j).Consolidate sources:=ReadBk & "R" & j & "C105:R" & j + 5 & "C117", Function:=xlSum
                   '今期実績のデータを前期実績へ
-                  .Range("DA" & j).Consolidate sources:=ReadBk & "R" & j & "C27:R" & j + 5 & "C39", Function:=xlSum
+                  WriteSheet.Range("DA" & j).Consolidate sources:=ReadBk & "R" & j & "C27:R" & j + 5 & "C39", Function:=xlSum
                   '来期計画のデータを事業計画へ
-                  .Range("CA" & j).Consolidate sources:=ReadBk & "R" & j & "C131:R" & j + 5 & "C143", Function:=xlSum
+                  WriteSheet.Range("CA" & j).Consolidate sources:=ReadBk & "R" & j & "C131:R" & j + 5 & "C143", Function:=xlSum
                   '今期実績、月/計画、来期計画のデータを消去
-                  .Range("AA" & j & ":AM" & j + 5).ClearContents
-                  .Range("BA" & j & ":BM" & j + 5).ClearContents
-                  .Range("EA" & j & ":EM" & j + 5).ClearContents
+                  WriteSheet.Range("AA" & j & ":AM" & j + 5).ClearContents
+                  WriteSheet.Range("BA" & j & ":BM" & j + 5).ClearContents
+                  WriteSheet.Range("EA" & j & ":EM" & j + 5).ClearContents
                 Next
               Case Else
                 ReadBk = "[" & BookName(1) & "]" & SheetName & "!"
@@ -74,6 +74,7 @@ Attribute MENTE_Year.VB_ProcData.VB_Invoke_Func = " \n14"
                 WriteSheet.Range("AA50").Consolidate sources:=ReadBk & "R50C105:R91C117", Function:=xlSum
                 '今期実績のデータを前期実績へ
 '                .Range("DA10").Consolidate sources:=ReadBk & "R10C27:R37C39", Function:=xlSum
+                .Unprotect Password:="sdc2035"
                 .Range("AA10:AL37").Copy (.Range("DA10"))
 '                .Range("DA50").Consolidate sources:=ReadBk & "R50C27:R91C39", Function:=xlSum
                 .Range("AA50:AL91").Copy (.Range("DA50"))
